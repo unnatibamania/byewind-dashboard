@@ -36,7 +36,7 @@ export default function RootLayout({
             <LeftSidebar />
             <SidebarInset>
               <Header />
-              <main className="flex-1">{children}</main>
+              <main className="flex-1 p-7">{children}</main>
             </SidebarInset>
             <RightSidebar />
           </SidebarProvider>
