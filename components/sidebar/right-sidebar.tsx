@@ -5,8 +5,8 @@ import { Sidebar, SidebarContent, SidebarGroup } from '@/components/ui/sidebar';
 
 export const RightSidebar = () => {
   return (
-    <Sidebar side="right" className="p-5">
-      <SidebarContent className="gap-6">
+    <Sidebar side="right">
+      <SidebarContent className="gap-6 p-3 md:p-5">
         <SidebarGroup>
           <NotificationsSection />
         </SidebarGroup>

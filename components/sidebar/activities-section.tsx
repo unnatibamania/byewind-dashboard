@@ -60,7 +60,7 @@ export const ActivitiesSection = () => {
                 alt={activity.description}
               />
               {idx < activities.length - 1 && (
-                <div className="w-px flex-1 bg-black/10 translate-y-2" />
+                <div className="w-px flex-1 bg-primary/10 translate-y-2" />
               )}
             </div>
 
