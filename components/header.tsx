@@ -17,6 +17,7 @@ import {
   BreadcrumbPage,
 } from '@/components/ui/breadcrumb';
 import { Input } from '@/components/ui/input';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export const Header = () => {
   return (
@@ -43,6 +44,7 @@ export const Header = () => {
       <div className="flex items-center gap-5">
         <Input placeholder="Search" className="bg-primary/5 border-none" />
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <Button variant="ghost" size="icon" title="Refresh">
             <ClockCounterClockwiseIcon size={20} weight="duotone" />
           </Button>
