@@ -4,6 +4,9 @@ import './globals.css';
 
 import { Header } from '@/components/header';
 import { ThemeProvider } from '@/components/theme-provider';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { LeftSidebar } from '@/components/sidebar/left-sidebar';
+import { RightSidebar } from '@/components/sidebar/right-sidebar';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -29,8 +32,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          <main className="flex-1">{children}</main>
+          <SidebarProvider>
+            <LeftSidebar />
+            <SidebarInset>
+              <Header />
+              <main className="flex-1">{children}</main>
+            </SidebarInset>
+            <RightSidebar />
+          </SidebarProvider>
         </ThemeProvider>
       </body>
     </html>
