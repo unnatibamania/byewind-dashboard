@@ -1,4 +1,5 @@
 import { StatCard } from '@/components/dashboard/stat-card';
+import { ProjectionChart } from '@/components/dashboard/projection-chart';
 
 const Home = () => {
   return (
@@ -35,7 +36,9 @@ const Home = () => {
             format="percentage"
           />
         </div>
-        <div className="bg-primary-light rounded-2xl h-full md:col-span-2"></div>
+        <div className="bg-primary-light p-6 rounded-2xl h-full md:col-span-2">
+          <ProjectionChart />
+        </div>
         <div className="bg-primary-light rounded-2xl h-64 md:col-span-3"></div>
         <div className="bg-primary-light rounded-2xl h-64 md:col-span-1"></div>
         <div className="bg-primary-light rounded-2xl h-64 md:col-span-3"></div>
