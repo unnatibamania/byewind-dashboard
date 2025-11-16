@@ -31,7 +31,7 @@ const chartConfig = {
 export const ProjectionChart = () => {
   return (
     <div className="h-full flex flex-col">
-      <h3 className="text-lg font-semibold mb-4">Projections vs Actuals</h3>
+      <h3 className="text-sm font-semibold mb-4">Projections vs Actuals</h3>
       <ChartContainer config={chartConfig} className="w-full h-[180px]">
         <BarChart
           data={chartData}

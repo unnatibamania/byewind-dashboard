@@ -1,6 +1,7 @@
 import { StatCard } from '@/components/dashboard/stat-card';
 import { ProjectionChart } from '@/components/dashboard/projection-chart';
 import { RevenueChart } from '@/components/dashboard/revenue-chart';
+import { RevenueByLocation } from '@/components/dashboard/revenue-by-location';
 
 const Home = () => {
   return (
@@ -43,7 +44,9 @@ const Home = () => {
         <div className="bg-primary-light p-6 rounded-2xl h-full xl:col-span-3">
           <RevenueChart />
         </div>
-        <div className="bg-primary-light rounded-2xl h-full xl:col-span-1"></div>
+        <div className="bg-primary-light p-6 rounded-2xl h-full xl:col-span-1">
+          <RevenueByLocation />
+        </div>
         <div className="bg-primary-light rounded-2xl h-64 xl:col-span-3"></div>
         <div className="bg-primary-light rounded-2xl h-64 xl:col-span-1"></div>
       </section>

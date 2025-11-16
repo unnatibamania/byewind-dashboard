@@ -77,32 +77,33 @@ export const RevenueChart = () => {
   return (
     <div className="h-full flex flex-col gap-4 overflow-hidden">
       <div className="flex items-center gap-4">
-        <h3 className="text-lg font-semibold">Revenue</h3>
+        <h3 className="text-sm font-semibold">Revenue</h3>
         <Separator orientation="vertical" className="hidden xl:block" />
-        <div className="flex flex-col xl:flex-row">
+        <div className="flex flex-col xl:flex-row xl:gap-6">
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-primary-brand" />
-            <span className="text-muted-foreground text-sm">Current Week</span>
+            <span className="text-sm">Current Week</span>
             <span className="font-semibold text-sm">
               ${(currentWeekTotal / 1000).toLocaleString()}
             </span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-secondary-cyan" />
-            <span className="text-muted-foreground text-sm">Previous Week</span>
+            <span className="text-sm">Previous Week</span>
             <span className="font-semibold text-sm">
               ${(previousWeekTotal / 1000).toLocaleString()}
             </span>
           </div>
         </div>
       </div>
-      <ChartContainer config={chartConfig} className="w-xs md:w-full h-[240px]">
+      <ChartContainer config={chartConfig} className="w-xs md:w-full h-[280px]">
         <LineChart
           data={chartData}
           accessibilityLayer
           margin={{
             left: -16,
             top: 16,
+            bottom: 0,
           }}
         >
           <CartesianGrid vertical={false} horizontal={true} />
