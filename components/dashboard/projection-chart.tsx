@@ -33,7 +33,12 @@ export const ProjectionChart = () => {
     <div className="h-full flex flex-col">
       <h3 className="text-lg font-semibold mb-4">Projections vs Actuals</h3>
       <ChartContainer config={chartConfig} className="w-full h-[180px]">
-        <BarChart data={chartData} accessibilityLayer barCategoryGap="30%">
+        <BarChart
+          data={chartData}
+          accessibilityLayer
+          margin={{ left: -16, top: 16 }}
+          barCategoryGap="30%"
+        >
           <CartesianGrid vertical={false} />
           <XAxis
             dataKey="month"

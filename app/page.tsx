@@ -1,12 +1,13 @@
 import { StatCard } from '@/components/dashboard/stat-card';
 import { ProjectionChart } from '@/components/dashboard/projection-chart';
+import { RevenueChart } from '@/components/dashboard/revenue-chart';
 
 const Home = () => {
   return (
     <div className="flex flex-col gap-4">
       <h2 className="px-2 py-1 text-sm font-semibold">eCommerce</h2>
-      <section className="grid md:grid-cols-4 gap-3 md:gap-7">
-        <div className="md:col-span-2 grid grid-cols-2 gap-3 md:gap-7">
+      <section className="grid xl:grid-cols-4 gap-3 xl:gap-7">
+        <div className="xl:col-span-2 grid grid-cols-2 gap-3 xl:gap-7">
           <StatCard
             title="Customers"
             value={3781}
@@ -36,13 +37,15 @@ const Home = () => {
             format="percentage"
           />
         </div>
-        <div className="bg-primary-light p-6 rounded-2xl h-full md:col-span-2">
+        <div className="bg-primary-light p-6 rounded-2xl h-full xl:col-span-2">
           <ProjectionChart />
         </div>
-        <div className="bg-primary-light rounded-2xl h-64 md:col-span-3"></div>
-        <div className="bg-primary-light rounded-2xl h-64 md:col-span-1"></div>
-        <div className="bg-primary-light rounded-2xl h-64 md:col-span-3"></div>
-        <div className="bg-primary-light rounded-2xl h-64 md:col-span-1"></div>
+        <div className="bg-primary-light p-6 rounded-2xl h-full xl:col-span-3">
+          <RevenueChart />
+        </div>
+        <div className="bg-primary-light rounded-2xl h-full xl:col-span-1"></div>
+        <div className="bg-primary-light rounded-2xl h-64 xl:col-span-3"></div>
+        <div className="bg-primary-light rounded-2xl h-64 xl:col-span-1"></div>
       </section>
     </div>
   );
