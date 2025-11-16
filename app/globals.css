@@ -81,6 +81,7 @@
   --sidebar-ring: oklch(0.708 0 0);
   --primary-blue: #e3f5ff;
   --primary-purple: #e5ecf6;
+  --primary-light: #f7f9fb;
 }
 
 .dark {
@@ -117,6 +118,7 @@
   --sidebar-ring: oklch(0.556 0 0);
   --primary-blue: #e3f5ff;
   --primary-purple: #e5ecf6;
+  --primary-light: rgba(255, 255, 255, 0.05);
 }
 
 @layer base {
