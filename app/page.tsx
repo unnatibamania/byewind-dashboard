@@ -3,6 +3,7 @@ import { ProjectionChart } from '@/components/dashboard/projection-chart';
 import { RevenueChart } from '@/components/dashboard/revenue-chart';
 import { RevenueByLocation } from '@/components/dashboard/revenue-by-location';
 import { TopSellingProductsTable } from '@/components/dashboard/top-selling-products-table';
+import { TotalSalesChart } from '@/components/dashboard/total-sales-chart';
 
 const Home = () => {
   return (
@@ -51,7 +52,9 @@ const Home = () => {
         <div className="bg-primary-light rounded-2xl p-6 xl:col-span-3">
           <TopSellingProductsTable />
         </div>
-        <div className="bg-primary-light rounded-2xl h-full xl:col-span-1"></div>
+        <div className="bg-primary-light rounded-2xl p-6 h-full xl:col-span-1">
+          <TotalSalesChart />
+        </div>
       </section>
     </div>
   );
