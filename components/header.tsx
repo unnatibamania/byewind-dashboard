@@ -46,10 +46,10 @@ export const Header = () => {
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink href="/">Dashboards</BreadcrumbLink>
-              <BreadcrumbSeparator className="mx-1">/</BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbPage>Default</BreadcrumbPage>
-              </BreadcrumbItem>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator className="mx-1">/</BreadcrumbSeparator>
+            <BreadcrumbItem>
+              <BreadcrumbPage>Default</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
