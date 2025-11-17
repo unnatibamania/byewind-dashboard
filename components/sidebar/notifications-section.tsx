@@ -64,7 +64,7 @@ export const NotificationsSection = () => {
             </div>
             <div className="flex flex-col min-w-0">
               <p className="text-sm truncate">{notification.title}</p>
-              <span className="text-xs text-muted-foreground">
+              <span className="text-xs text-primary/40">
                 {notification.datetime}
               </span>
             </div>

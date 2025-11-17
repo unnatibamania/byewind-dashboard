@@ -86,14 +86,14 @@ const NavSection = ({ title, items }: { title: string; items: NavItem[] }) => {
               {item.children ? (
                 <CaretDownIcon
                   className={cn(
-                    'text-muted-foreground',
+                    'text-primary/20',
                     item.hideCaret && 'opacity-0'
                   )}
                 />
               ) : (
                 <CaretRightIcon
                   className={cn(
-                    'text-muted-foreground',
+                    'text-primary/20',
                     item.hideCaret && 'opacity-0'
                   )}
                 />

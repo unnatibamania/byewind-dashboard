@@ -34,9 +34,11 @@ export default function RootLayout({
         >
           <SidebarProvider>
             <LeftSidebar />
-            <SidebarInset>
+            <SidebarInset className="overflow-hidden h-svh">
               <Header />
-              <main className="flex-1 p-5 md:p-7">{children}</main>
+              <main className="flex-1 overflow-auto">
+                <div className="p-5 md:p-7">{children}</div>
+              </main>
             </SidebarInset>
             <RightSidebar />
           </SidebarProvider>

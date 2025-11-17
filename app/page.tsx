@@ -4,7 +4,6 @@ import { RevenueChart } from '@/components/dashboard/revenue-chart';
 import { RevenueByLocation } from '@/components/dashboard/revenue-by-location';
 import { TopSellingProductsTable } from '@/components/dashboard/top-selling-products-table';
 import { TotalSalesChart } from '@/components/dashboard/total-sales-chart';
-import { ScrollArea } from '@/components/ui/scroll-area';
 
 const Home = () => {
   return (

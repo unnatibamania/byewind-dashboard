@@ -37,34 +37,26 @@ const products = [
 
 export const TopSellingProductsTable = () => {
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full w-full flex flex-col">
       <h3 className="text-sm font-semibold mb-4">Top Selling Products</h3>
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="text-muted-foreground font-normal">
-              Name
-            </TableHead>
-            <TableHead className="text-muted-foreground font-normal">
-              Price
-            </TableHead>
-            <TableHead className="text-muted-foreground font-normal">
-              Quantity
-            </TableHead>
-            <TableHead className="text-muted-foreground font-normal text-right">
-              Amount
-            </TableHead>
+            <TableHead>Name</TableHead>
+            <TableHead>Price</TableHead>
+            <TableHead>Quantity</TableHead>
+            <TableHead>Amount</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {products.map((product) => (
-            <TableRow key={product.name}>
-              <TableCell className="font-normal">{product.name}</TableCell>
-              <TableCell className="font-normal">
-                ${product.price.toFixed(2)}
+            <TableRow key={product.name} className="border-b-0">
+              <TableCell className="max-w-20 truncate">
+                {product.name}
               </TableCell>
-              <TableCell className="font-normal">{product.quantity}</TableCell>
-              <TableCell className="font-normal text-right">
+              <TableCell>${product.price.toFixed(2)}</TableCell>
+              <TableCell>{product.quantity}</TableCell>
+              <TableCell>
                 $
                 {(product.price * product.quantity).toLocaleString('en-US', {
                   minimumFractionDigits: 2,

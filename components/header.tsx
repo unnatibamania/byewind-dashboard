@@ -24,7 +24,7 @@ export const Header = () => {
   const { toggleSidebar } = useSidebar();
 
   return (
-    <header className="flex justify-between items-center p-5 md:px-7 md:py-5 border-b border-border">
+    <header className="sticky top-0 z-10 bg-background flex justify-between items-center p-5 md:px-7 md:py-5 border-b border-border">
       <div className="flex items-center gap-2">
         <Button
           variant="ghost"

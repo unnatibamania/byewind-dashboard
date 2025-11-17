@@ -66,7 +66,7 @@ export const ActivitiesSection = () => {
 
             <div className="flex flex-col min-w-0">
               <p className="text-sm truncate">{activity.description}</p>
-              <span className="text-xs text-muted-foreground">
+              <span className="text-xs text-primary/40">
                 {activity.datetime}
               </span>
             </div>
