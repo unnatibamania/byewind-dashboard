@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-'use client';
+"use client";
 
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -14,8 +15,8 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarMenuButton,
-} from '@/components/ui/sidebar';
-import { cn } from '@/lib/utils';
+} from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
 
 import {
   BookOpenIcon,
@@ -30,7 +31,7 @@ import {
   ChatsCircleIcon,
   CaretDownIcon,
   CaretRightIcon,
-} from '@phosphor-icons/react';
+} from "@phosphor-icons/react";
 
 type NavItem = {
   label: string;
@@ -45,75 +46,106 @@ type NavItem = {
 
 const dashboardItems: NavItem[] = [
   {
-    label: 'Default',
+    label: "Default",
     icon: ChartPieSliceIcon,
     isActive: true,
     hideCaret: true,
   },
-  { label: 'eCommerce', icon: ShoppingBagOpenIcon },
-  { label: 'Projects', icon: FolderIcon },
-  { label: 'Online Courses', icon: BookOpenIcon },
+  { label: "eCommerce", icon: ShoppingBagOpenIcon },
+  { label: "Projects", icon: FolderIcon },
+  { label: "Online Courses", icon: BookOpenIcon },
 ];
 
 const pageItems: NavItem[] = [
   {
-    label: 'User Profile',
+    label: "User Profile",
     icon: IdentificationBadgeIcon,
     children: [
-      { label: 'Overview' },
-      { label: 'Projects' },
-      { label: 'Campaigns' },
-      { label: 'Documents' },
-      { label: 'Followers' },
+      { label: "Overview" },
+      { label: "Projects" },
+      { label: "Campaigns" },
+      { label: "Documents" },
+      { label: "Followers" },
     ],
   },
-  { label: 'Account', icon: IdentificationCardIcon },
-  { label: 'Corporate', icon: UsersThreeIcon },
-  { label: 'Blog', icon: NotebookIcon },
-  { label: 'Social', icon: ChatsCircleIcon },
+  { label: "Account", icon: IdentificationCardIcon },
+  { label: "Corporate", icon: UsersThreeIcon },
+  { label: "Blog", icon: NotebookIcon },
+  { label: "Social", icon: ChatsCircleIcon },
 ];
 
 const NavSection = ({ title, items }: { title: string; items: NavItem[] }) => {
+  const [openSubmenus, setOpenSubmenus] = useState<Set<string>>(new Set());
+
+  const toggleSubmenu = (label: string) => {
+    setOpenSubmenus((prev) => {
+      const next = new Set(prev);
+      if (next.has(label)) {
+        next.delete(label);
+      } else {
+        next.add(label);
+      }
+      return next;
+    });
+  };
+
   return (
     <SidebarGroup>
       <SidebarGroupLabel className="px-3 py-1 font-normal text-sm">
         {title}
       </SidebarGroupLabel>
       <SidebarMenu>
-        {items.map((item) => (
-          <SidebarMenuItem key={item.label}>
-            <SidebarMenuButton isActive={item.isActive}>
-              {item.children ? (
-                <CaretDownIcon
-                  className={cn(
-                    'text-primary/20',
-                    item.hideCaret && 'opacity-0'
-                  )}
-                />
-              ) : (
-                <CaretRightIcon
-                  className={cn(
-                    'text-primary/20',
-                    item.hideCaret && 'opacity-0'
-                  )}
-                />
-              )}
-              <item.icon weight="duotone" />
-              <span>{item.label}</span>
-            </SidebarMenuButton>
-            {item.children ? (
-              <SidebarMenuSub>
-                {item.children.map((child) => (
-                  <SidebarMenuSubItem key={child.label}>
-                    <SidebarMenuSubButton isActive={child.isActive}>
-                      <span>{child.label}</span>
-                    </SidebarMenuSubButton>
-                  </SidebarMenuSubItem>
-                ))}
-              </SidebarMenuSub>
-            ) : null}
-          </SidebarMenuItem>
-        ))}
+        {items.map((item) => {
+          const isSubmenuOpen = openSubmenus.has(item.label);
+          const hasChildren = !!item.children;
+
+          return (
+            <SidebarMenuItem key={item.label}>
+              <SidebarMenuButton
+                isActive={item.isActive}
+                onClick={() => hasChildren && toggleSubmenu(item.label)}
+              >
+                {hasChildren ? (
+                  isSubmenuOpen ? (
+                    <CaretDownIcon
+                      className={cn(
+                        "text-primary/20",
+                        item.hideCaret && "opacity-0"
+                      )}
+                    />
+                  ) : (
+                    <CaretRightIcon
+                      className={cn(
+                        "text-primary/20",
+                        item.hideCaret && "opacity-0"
+                      )}
+                    />
+                  )
+                ) : (
+                  <CaretRightIcon
+                    className={cn(
+                      "text-primary/20",
+                      item.hideCaret && "opacity-0"
+                    )}
+                  />
+                )}
+                <item.icon weight="duotone" />
+                <span>{item.label}</span>
+              </SidebarMenuButton>
+              {hasChildren && isSubmenuOpen && item.children ? (
+                <SidebarMenuSub>
+                  {item.children.map((child) => (
+                    <SidebarMenuSubItem key={child.label}>
+                      <SidebarMenuSubButton isActive={child.isActive}>
+                        <span>{child.label}</span>
+                      </SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
+                  ))}
+                </SidebarMenuSub>
+              ) : null}
+            </SidebarMenuItem>
+          );
+        })}
       </SidebarMenu>
     </SidebarGroup>
   );
