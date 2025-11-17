@@ -1,41 +1,41 @@
-'use client';
+"use client";
 
-import { useMemo } from 'react';
-import { Pie, PieChart } from 'recharts';
+import { useMemo } from "react";
+import { Pie, PieChart } from "recharts";
 
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from '@/components/ui/chart';
+} from "@/components/ui/chart";
 
 const chartData = [
-  { channel: 'direct', sales: 300.56, fill: 'var(--color-primary-brand)' },
-  { channel: 'affiliate', sales: 135.18, fill: 'var(--color-secondary-mint)' },
+  { channel: "direct", sales: 300.56, fill: "var(--color-primary-brand)" },
+  { channel: "affiliate", sales: 135.18, fill: "var(--color-secondary-mint)" },
   {
-    channel: 'sponsored',
+    channel: "sponsored",
     sales: 154.02,
-    fill: 'var(--color-secondary-indigo)',
+    fill: "var(--color-secondary-indigo)",
   },
-  { channel: 'email', sales: 48.96, fill: 'var(--color-secondary-blue)' },
+  { channel: "email", sales: 48.96, fill: "var(--color-secondary-blue)" },
 ];
 
 const chartConfig = {
   sales: {
-    label: 'Sales',
+    label: "Sales",
   },
   direct: {
-    label: 'Direct',
+    label: "Direct",
   },
   affiliate: {
-    label: 'Affiliate',
+    label: "Affiliate",
   },
   sponsored: {
-    label: 'Sponsored',
+    label: "Sponsored",
   },
   email: {
-    label: 'E-mail',
+    label: "E-mail",
   },
 } satisfies ChartConfig;
 
@@ -47,7 +47,7 @@ export const TotalSalesChart = () => {
   return (
     <div className="h-full flex flex-col gap-4">
       <h3 className="text-sm font-semibold">Total Sales</h3>
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center min-h-[120px]">
         <ChartContainer
           config={chartConfig}
           className="mx-auto aspect-square h-full"
