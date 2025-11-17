@@ -27,7 +27,7 @@ const contacts: Contact[] = [
   },
   {
     id: '4',
-    name: 'Andi LAne',
+    name: 'Andi Lane',
     avatar:
       'https://api.dicebear.com/9.x/notionists/svg?seed=Andi&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf',
   },

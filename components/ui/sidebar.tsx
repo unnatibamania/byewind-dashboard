@@ -99,10 +99,12 @@ function SidebarProvider({
   onOpenChange?: (open: SidebarOpenState) => void;
 }) {
   const isMobile = useIsMobile();
-  const [_openMobile, _setOpenMobile] = React.useState<SidebarOpenState>(() => ({
-    left: false,
-    right: false,
-  }));
+  const [_openMobile, _setOpenMobile] = React.useState<SidebarOpenState>(
+    () => ({
+      left: false,
+      right: false,
+    })
+  );
   const openMobile = _openMobile;
 
   const [_open, _setOpen] = React.useState<SidebarOpenState>(() =>
@@ -117,10 +119,7 @@ function SidebarProvider({
   }, [_open, openProp]);
 
   const setOpen = React.useCallback(
-    (
-      side: SidebarSide,
-      value: boolean | ((value: boolean) => boolean)
-    ) => {
+    (side: SidebarSide, value: boolean | ((value: boolean) => boolean)) => {
       const nextState = (current: SidebarOpenState) => {
         const nextValue =
           typeof value === 'function' ? value(current[side]) : value;
@@ -133,11 +132,15 @@ function SidebarProvider({
       if (setOpenProp) {
         const controlledNext = nextState(open);
         setOpenProp(controlledNext);
-        document.cookie = `${SIDEBAR_COOKIE_NAME}=${JSON.stringify(controlledNext)}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+        document.cookie = `${SIDEBAR_COOKIE_NAME}=${JSON.stringify(
+          controlledNext
+        )}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
       } else {
         _setOpen((previous) => {
           const updated = nextState(previous);
-          document.cookie = `${SIDEBAR_COOKIE_NAME}=${JSON.stringify(updated)}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+          document.cookie = `${SIDEBAR_COOKIE_NAME}=${JSON.stringify(
+            updated
+          )}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
           return updated;
         });
       }
@@ -146,10 +149,7 @@ function SidebarProvider({
   );
 
   const setOpenMobile = React.useCallback(
-    (
-      side: SidebarSide,
-      value: boolean | ((value: boolean) => boolean)
-    ) => {
+    (side: SidebarSide, value: boolean | ((value: boolean) => boolean)) => {
       _setOpenMobile((previous) => {
         const nextValue =
           typeof value === 'function' ? value(previous[side]) : value;
@@ -191,13 +191,10 @@ function SidebarProvider({
   // We add a state so that we can do data-state="expanded" or "collapsed".
   // This makes it easier to style the sidebar with Tailwind classes.
   const state = React.useMemo(() => {
-    return SIDEBAR_SIDES.reduce(
-      (acc, side) => {
-        acc[side] = open[side] ? 'expanded' : 'collapsed';
-        return acc;
-      },
-      {} as Record<SidebarSide, 'expanded' | 'collapsed'>
-    );
+    return SIDEBAR_SIDES.reduce((acc, side) => {
+      acc[side] = open[side] ? 'expanded' : 'collapsed';
+      return acc;
+    }, {} as Record<SidebarSide, 'expanded' | 'collapsed'>);
   }, [open]);
 
   const contextValue = React.useMemo<SidebarContextProps>(
@@ -280,7 +277,11 @@ function Sidebar({
   if (isMobile) {
     return (
       <SidebarSideContext.Provider value={side}>
-        <Sheet open={mobileOpenState} onOpenChange={handleMobileChange} {...props}>
+        <Sheet
+          open={mobileOpenState}
+          onOpenChange={handleMobileChange}
+          {...props}
+        >
           <SheetContent
             data-sidebar="sidebar"
             data-slot="sidebar"
@@ -582,7 +583,7 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<'li'>) {
 }
 
 const sidebarMenuButtonVariants = cva(
-  'peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0',
+  'peer/menu-button relative flex w-full items-center gap-2 rounded-md p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 data-[active=true]:before:absolute data-[active=true]:before:left-0 data-[active=true]:before:top-0 data-[active=true]:before:h-4 data-[active=true]:before:top-1/2 data-[active=true]:before:-left-0.5 data-[active=true]:before:-translate-y-1/2 data-[active=true]:before:w-1 data-[active=true]:before:rounded data-[active=true]:before:bg-primary-brand data-[active=true]:before:content-[""]',
   {
     variants: {
       variant: {
@@ -754,7 +755,7 @@ function SidebarMenuSub({ className, ...props }: React.ComponentProps<'ul'>) {
       data-slot="sidebar-menu-sub"
       data-sidebar="menu-sub"
       className={cn(
-        'border-sidebar-border mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l px-2.5 py-0.5',
+        'ml-10 flex min-w-0 translate-x-px flex-col gap-1 px-2.5 py-0.5',
         'group-data-[collapsible=icon]:hidden',
         className
       )}

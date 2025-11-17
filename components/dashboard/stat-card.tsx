@@ -1,6 +1,9 @@
+'use client';
+
 import NumberFlow from '@number-flow/react';
 
 import { cn } from '@/lib/utils';
+import { TrendDownIcon, TrendUpIcon } from '@phosphor-icons/react';
 
 interface StatCardProps {
   title: string;
@@ -36,7 +39,21 @@ export const StatCard = ({
             suffix={format === 'percentage' ? '%' : ''}
           />
         </p>
-        <p className="text-sm text-muted-foreground">{delta}</p>
+        <div className="flex items-center gap-1">
+          <p
+            className={cn(
+              'text-sm',
+              background === 'primary-light' && 'text-primary'
+            )}
+          >
+            {delta}
+          </p>
+          {delta > 0 ? (
+            <TrendUpIcon className="size-4" />
+          ) : (
+            <TrendDownIcon className="size-4" />
+          )}
+        </div>
       </div>
     </div>
   );

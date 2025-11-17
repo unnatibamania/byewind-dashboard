@@ -15,6 +15,7 @@ import {
   SidebarMenuSubItem,
   SidebarMenuButton,
 } from '@/components/ui/sidebar';
+import { cn } from '@/lib/utils';
 
 import {
   BookOpenIcon,
@@ -35,6 +36,7 @@ type NavItem = {
   label: string;
   icon: Icon;
   isActive?: boolean;
+  hideCaret?: boolean;
   children?: {
     label: string;
     isActive?: boolean;
@@ -42,7 +44,12 @@ type NavItem = {
 };
 
 const dashboardItems: NavItem[] = [
-  { label: 'Default', icon: ChartPieSliceIcon, isActive: true },
+  {
+    label: 'Default',
+    icon: ChartPieSliceIcon,
+    isActive: true,
+    hideCaret: true,
+  },
   { label: 'eCommerce', icon: ShoppingBagOpenIcon },
   { label: 'Projects', icon: FolderIcon },
   { label: 'Online Courses', icon: BookOpenIcon },
@@ -77,9 +84,19 @@ const NavSection = ({ title, items }: { title: string; items: NavItem[] }) => {
           <SidebarMenuItem key={item.label}>
             <SidebarMenuButton isActive={item.isActive}>
               {item.children ? (
-                <CaretDownIcon className="text-muted-foreground" />
+                <CaretDownIcon
+                  className={cn(
+                    'text-muted-foreground',
+                    item.hideCaret && 'opacity-0'
+                  )}
+                />
               ) : (
-                <CaretRightIcon className="text-muted-foreground" />
+                <CaretRightIcon
+                  className={cn(
+                    'text-muted-foreground',
+                    item.hideCaret && 'opacity-0'
+                  )}
+                />
               )}
               <item.icon weight="duotone" />
               <span>{item.label}</span>
@@ -88,7 +105,7 @@ const NavSection = ({ title, items }: { title: string; items: NavItem[] }) => {
               <SidebarMenuSub>
                 {item.children.map((child) => (
                   <SidebarMenuSubItem key={child.label}>
-                    <SidebarMenuSubButton size="sm" isActive={child.isActive}>
+                    <SidebarMenuSubButton isActive={child.isActive}>
                       <span>{child.label}</span>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
@@ -107,7 +124,7 @@ export const LeftSidebar = () => {
     <Sidebar side="left" className="px-3 py-5">
       <SidebarHeader className="flex flex-row items-center gap-2 px-2 mb-4">
         <img
-          src="https://github.com/unnatibamania.png"
+          src="https://api.dicebear.com/9.x/notionists/svg?seed=UnnatiBamania&backgroundColor=b6e3f4"
           alt="logo"
           width={24}
           height={24}
@@ -133,22 +150,23 @@ export const LeftSidebar = () => {
               Recents
             </Button>
           </div>
-          <div className="px-2 py-1 flex items-center gap-1">
-            <div className="size-4 flex items-center justify-center">
-              <div className="bg-primary/20 rounded-full size-1.5"></div>
-            </div>
-            <p>Overview</p>
-          </div>
-          <div className="px-2 py-1 flex items-center gap-1">
-            <div className="size-4 flex items-center justify-center">
-              <div className="bg-primary/20 rounded-full size-1.5"></div>
-            </div>
-            <p>Projects</p>
-          </div>
+          <Item label="Overview" />
+          <Item label="Projects" />
         </div>
         <NavSection title="Dashboards" items={dashboardItems} />
         <NavSection title="Pages" items={pageItems} />
       </SidebarContent>
     </Sidebar>
+  );
+};
+
+const Item = ({ label }: { label: string }) => {
+  return (
+    <div className="px-2 py-1 flex items-center gap-1">
+      <div className="size-4 flex items-center justify-center">
+        <div className="bg-primary/20 rounded-full size-1.5"></div>
+      </div>
+      <p>{label}</p>
+    </div>
   );
 };

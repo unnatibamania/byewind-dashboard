@@ -4,10 +4,11 @@ import { RevenueChart } from '@/components/dashboard/revenue-chart';
 import { RevenueByLocation } from '@/components/dashboard/revenue-by-location';
 import { TopSellingProductsTable } from '@/components/dashboard/top-selling-products-table';
 import { TotalSalesChart } from '@/components/dashboard/total-sales-chart';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const Home = () => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 h-full">
       <h2 className="px-2 py-1 text-sm font-semibold">eCommerce</h2>
       <section className="grid xl:grid-cols-4 gap-3 xl:gap-7">
         <div className="xl:col-span-2 grid grid-cols-2 gap-3 xl:gap-7">
