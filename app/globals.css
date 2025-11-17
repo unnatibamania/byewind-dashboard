@@ -49,6 +49,8 @@
   --color-secondary-indigo: var(--secondary-indigo);
   --color-secondary-mint: var(--secondary-mint);
   --color-secondary-blue: var(--secondary-blue);
+  --color-secondary-yellow: var(--secondary-yellow);
+  --color-secondary-green: var(--secondary-green);
 }
 
 :root {
@@ -92,6 +94,9 @@
   --secondary-indigo: #95a4fc;
   --secondary-mint: #baedbd;
   --secondary-blue: #b1e3ff;
+  --primary-light: #f7f9fb;
+  --secondary-yellow: #ffe999;
+  --secondary-green: #a1e3cb;
 }
 
 .dark {
@@ -134,6 +139,9 @@
   --secondary-indigo: #95a4fc;
   --secondary-mint: #baedbd;
   --secondary-blue: #b1e3ff;
+  --primary-light: rgba(255, 255, 255, 0.05);
+  --secondary-yellow: #ffe999;
+  --secondary-green: #a1e3cb;
 }
 
 @layer base {
